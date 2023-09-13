@@ -12,7 +12,7 @@ def spt(sum_spt):
     # 1 < a < 250, 249 < b < 500, 499 < c < 997
     a = 2
     b = 250
-    c = math.sqrt(a) + math.sqrt(b)
+    c = math.sqrt(a ** 2 + b ** 2)
     while a + b + c != sum_spt:
         a = random.randint(1, 250)
         b = random.randint(249, 500)
