@@ -29,26 +29,15 @@ products = []
 a, b, c, d = 0, 1, 2, 3
 dim = 0
 diag_idx = -16
-diag = np.array([])
 
 while diag_idx != 17:
     diag_rl = np.diag(grid_arr, k=diag_idx)
-    diag = np.append(diag, diag_rl)
-    diag_idx += 1
-diag_idx = -16
-while diag_idx != 17:
     diag_lr = np.diag(np.flipud(grid_arr), k=diag_idx)
-    diag = np.append(diag, diag_lr)
+    for i in range(len(diag_rl) - 3):
+        products.append(diag_rl[i] * diag_rl[i + 1] * diag_rl[i + 2] * diag_rl[i + 3])
+        products.append(diag_lr[i] * diag_lr[i + 1] * diag_lr[i + 2] * diag_lr[i + 3])
     diag_idx += 1
 
-while d != 776:
-    products.append(diag[a] * diag[b] * diag[c] * diag[d])
-    a += 1
-    b += 1
-    c += 1
-    d += 1
-
-a, b, c, d = 0, 1, 2, 3
 while dim != 20:
     products.append(grid_arr_flat[a] * grid_arr_flat[b] * grid_arr_flat[c] * grid_arr_flat[d])
     products.append(grid_arr_t_flat[a] * grid_arr_t_flat[b] * grid_arr_t_flat[c] * grid_arr_t_flat[d])
